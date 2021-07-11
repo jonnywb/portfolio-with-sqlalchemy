@@ -115,15 +115,16 @@ Header  - Homepage
     padding-top: 5rem;
     text-align: center;
 }
+
+.header .bannertext{
+    color: var(--white);
+}
+
 /*End of Added*/
 
 .header h1{
     font-size: 32px;
     font-weight: bold;
-}
-
-.header .bannertext{
-    color: var(--white);
 }
 
 .header p {

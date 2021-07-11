@@ -11,7 +11,8 @@ def index():
 
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    projects = Project.query.all()
+    return render_template('about.html', projects=projects)
 
 def clean_date(date_str):
     split_date = date_str.split('-')
@@ -23,6 +24,7 @@ def clean_date(date_str):
 
 @app.route('/projects/new', methods=['GET', 'POST'])
 def create():
+    projects = Project.query.all()
     if request.form:
         new_project = Project(
             date=clean_date(request.form['date']),
@@ -33,16 +35,18 @@ def create():
         db.session.add(new_project)
         db.session.commit()
         return redirect(url_for('index'))
-    return render_template('addproject.html')
+    return render_template('addproject.html', projects=projects)
 
 @app.route('/projects/<id>')
 def detail(id):
+    projects = Project.query.all()
     project = Project.query.get_or_404(id)
     date_str = project.date.strftime("%B %Y")
-    return render_template('detail.html', project=project, date=date_str)
+    return render_template('detail.html', project=project, date=date_str, projects=projects)
 
 @app.route('/projects/<id>/edit', methods=['GET', 'POST'])
 def edit(id):
+    projects = Project.query.all()
     project = Project.query.get_or_404(id)
     date = project.date.strftime("%Y-%m")
     if request.form:
@@ -53,7 +57,7 @@ def edit(id):
         project.url = request.form['github']
         db.session.commit()
         return redirect(url_for('index'))
-    return render_template('editproject.html', project=project, date=date)
+    return render_template('editproject.html', project=project, date=date, projects=projects)
 
 @app.route('/projects/<id>/delete')
 def delete(id):
