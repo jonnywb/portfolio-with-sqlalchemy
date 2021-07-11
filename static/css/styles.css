@@ -615,6 +615,14 @@ EXCEEDS - About Page
     margin-bottom: 5rem;
 }
 
+/*Added*/
+
+#about-page p span{
+    font-weight: 600;
+}
+
+/****/
+
 #about-page a {
     background-color: var(--accent);
     text-decoration: none;
