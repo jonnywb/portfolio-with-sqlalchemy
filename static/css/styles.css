@@ -111,6 +111,13 @@ Header  - Homepage
     background-position: center;
 }
 
+#fouroheader{
+    background: url(/static/img/glencoe.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
 .header {
     padding-top: 5rem;
     text-align: center;
@@ -171,6 +178,46 @@ Header - Detail
     content: '\FE61';
     position: absolute;
     left: -20px;
+}
+
+/*******
+404
+*******/
+
+#fourofour {
+    background-color: var(--secondary);
+    position: relative;
+    padding: 3rem 5%;
+    text-align: center;
+}
+
+#fourofour #triangle9,
+#fourofour #triangle10 {
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 100px solid var(--secondary);
+    position: absolute;
+    top: -75px;
+}
+
+#fourofour #triangle9 {
+    right: -50px;
+}
+
+#fourofour #triangle10 {
+    right: 0px;
+}
+
+#fourofour h2 {
+    margin-bottom: 4rem;
+}
+
+#fourofour p {
+    margin-top: 2rem;
+    text-align: left;
+    margin-bottom: 5rem;
 }
 
 /*******

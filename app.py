@@ -9,10 +9,12 @@ def index():
     projects = Project.query.all()
     return render_template('index.html', projects=projects)
 
+
 @app.route('/about')
 def about():
     projects = Project.query.all()
     return render_template('about.html', projects=projects)
+
 
 def clean_date(date_str):
     split_date = date_str.split('-')
@@ -21,6 +23,7 @@ def clean_date(date_str):
     year = int(split_date[0])
 
     return datetime.date(year, month, 1)
+
 
 @app.route('/projects/new', methods=['GET', 'POST'])
 def create():
@@ -37,12 +40,15 @@ def create():
         return redirect(url_for('index'))
     return render_template('addproject.html', projects=projects)
 
+
 @app.route('/projects/<id>')
 def detail(id):
     projects = Project.query.all()
     project = Project.query.get_or_404(id)
     date_str = project.date.strftime("%B %Y")
-    return render_template('detail.html', project=project, date=date_str, projects=projects)
+    return render_template('detail.html', project=project, 
+                        date=date_str, projects=projects)
+
 
 @app.route('/projects/<id>/edit', methods=['GET', 'POST'])
 def edit(id):
@@ -57,7 +63,9 @@ def edit(id):
         project.url = request.form['github']
         db.session.commit()
         return redirect(url_for('index'))
-    return render_template('editproject.html', project=project, date=date, projects=projects)
+    return render_template('editproject.html', project=project, 
+                            date=date, projects=projects)
+
 
 @app.route('/projects/<id>/delete')
 def delete(id):
@@ -66,9 +74,13 @@ def delete(id):
     db.session.commit()
     return redirect(url_for('index'))
 
+
 @app.errorhandler(404)
 def not_found(error):
-    return render_template('404.html', msg=error), 404
+    projects = Project.query.all()
+    return render_template('404.html', projects=projects, 
+                            msg=error), 404
+
 
 if __name__ == '__main__':
     db.create_all()
