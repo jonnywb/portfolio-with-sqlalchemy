@@ -1,5 +1,5 @@
 from flask import (render_template, url_for,
-                    request, redirect)
+                   request, redirect)
 from models import db, Project, app
 import datetime
 
@@ -46,8 +46,8 @@ def detail(id):
     projects = Project.query.all()
     project = Project.query.get_or_404(id)
     date_str = project.date.strftime("%B %Y")
-    return render_template('detail.html', project=project, 
-                        date=date_str, projects=projects)
+    return render_template('detail.html', project=project,
+                           date=date_str, projects=projects)
 
 
 @app.route('/projects/<id>/edit', methods=['GET', 'POST'])
@@ -63,8 +63,8 @@ def edit(id):
         project.url = request.form['github']
         db.session.commit()
         return redirect(url_for('index'))
-    return render_template('editproject.html', project=project, 
-                            date=date, projects=projects)
+    return render_template('editproject.html', project=project,
+                           date=date, projects=projects)
 
 
 @app.route('/projects/<id>/delete')
@@ -78,8 +78,8 @@ def delete(id):
 @app.errorhandler(404)
 def not_found(error):
     projects = Project.query.all()
-    return render_template('404.html', projects=projects, 
-                            msg=error), 404
+    return render_template('404.html', projects=projects,
+                           msg=error), 404
 
 
 if __name__ == '__main__':
