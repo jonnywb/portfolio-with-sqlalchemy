@@ -1,5 +1,5 @@
 # P O R T F O L I O
-## Using Flash and SQLAlchemy
+## Using Flask and SQLAlchemy
 
 ### Treehouse Python Techdegree Unit 5 Project
 
