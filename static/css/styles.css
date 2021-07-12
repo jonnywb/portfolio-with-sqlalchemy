@@ -622,16 +622,24 @@ EXCEEDS - About Page
     font-weight: 600;
 }
 
+#about-page a {
+    text-decoration: none;
+}
+
+#about-page a:hover {
+    color: var(--secondary-text);
+}
+
 /****/
 
-#about-page a {
+/*#about-page a {
     background-color: var(--accent);
     text-decoration: none;
     color: var(--white);
     border-radius: 10px;
     font-size: 20px;
     padding: 9px 40px;
-}
+}*/
 
 #about-page a i {
     color: var(--white);
